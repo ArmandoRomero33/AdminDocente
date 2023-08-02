@@ -4,34 +4,28 @@ import TablaMaterias from './TablaMaterias';
 
 const App = () => {
   const [datosMaterias, setDatosMaterias] = useState([]);
-  const [cargando, setCargando] = useState(false);
-
-  const cargarDatos = () => {
-    setCargando(true);
-    // Llamada a la API para obtener los datos de materias desde el backend
-    axios.get('/api/materias')
-      .then((response) => {
-        setDatosMaterias(response.data);
-        setCargando(false);
-      })
-      .catch((error) => {
-        console.error('Error al obtener datos:', error);
-        setCargando(false);
-      });
-  };
+  const [cargando, setCargando] = useState(true); // Inicialmente, establecemos "cargando" en true
 
   useEffect(() => {
-    // Cargar los datos automáticamente al cargar la página (opcional)
+    // Función para obtener los datos de materias desde el backend
+    const cargarDatos = async () => {
+      try {
+        const response = await axios.get('/api/materias');
+        setDatosMaterias(response.data);
+        setCargando(false); // Una vez que los datos se han cargado, establecemos "cargando" en false
+      } catch (error) {
+        console.error('Error al obtener datos:', error);
+        setCargando(false); // En caso de error, también establecemos "cargando" en false
+      }
+    };
+
     cargarDatos();
   }, []);
 
   return (
     <div>
       <h1>Administracion Docente</h1>
-      <button onClick={cargarDatos} disabled={cargando}>
-        {cargando ? 'Cargando...' : 'Cargar Datos'}
-      </button>
-      <br />
+
       {cargando ? (
         <p>Espera, cargando datos...</p>
       ) : (

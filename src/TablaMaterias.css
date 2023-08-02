@@ -1,6 +1,6 @@
-/* TablaMaterias.css */
+/* TablaMaterias.css 
 
-/* Estilos generales de la tabla */
+/* Estilos generales de la tabla 
 .table-container {
     max-width: 800px;
     margin: 0 auto;
@@ -24,27 +24,29 @@
     background-color: #f2f2f2;
   }
   
-  /* Estilos para filas alternas */
+  /* Estilos para filas alternas 
   tbody tr:nth-child(even) {
     background-color: #f9f9f9;
   }
   
-  /* Estilos para la barra de búsqueda */
+  /* Estilos para la barra de búsqueda
   .search-bar {
     max-width: 300px;
     margin: 0 auto;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+    margin-top: -20px;
   }
   
-  .search-bar input {
-    width: 100%;
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+  /* TablaDocentes.css 
+.search-bar input {
+  width: 250%;
+  padding: 12px;
+  font-size: 16px;
+  text-align: center;
+}
+
   
-  /* Estilos para la paginación */
+  /* Estilos para la paginación 
   .pagination {
     display: flex;
     justify-content: center;
@@ -67,3 +69,138 @@
     cursor: not-allowed;
   }
   
+
+
+  
+  .buuton-container{
+    display: flex;
+    
+  }
+
+
+  .botondm{
+    padding: 40px;
+    
+  }
+  
+  /* Estilos para el botón "Mostrar Docentes" 
+.toggle-table button {
+  
+  color: #2e2828; /* Color del texto en blanco 
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 20px;
+  margin-top: 15px; /* Mueve el botón 20px a la derecha 
+ 
+}
+
+/* Estilos para el botón "Mostrar Materias" cuando está activo 
+.toggle-table button.botondm {
+  background-color: #7fd672; /* Color de fondo verde claro 
+}
+
+h1 {
+  color: #204120; 
+  
+  margin-bottom: 20px;
+}
+*/
+
+/* TablaMaterias.css */
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 15px 70px;
+}
+
+.toggle-table button {
+  background-color: #24d063;
+  color: #100d0d;
+  border: none;
+  padding: 8px 80px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: -15px;
+  margin-right: 30%;
+}
+
+.search-bar {
+  max-width: 300px;
+  margin: 0 auto; /* Agregar esta línea para centrar horizontalmente */
+  margin-bottom: 50px;
+  margin-top: -2px;
+}
+.search-bar input {
+  width: 100%; /* Cambiar el valor a 100% para ocupar todo el ancho disponible */
+  padding: 11px 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  margin-right: 50px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.table-header {
+  background-color: #f2f2f2;
+}
+
+/* TablaMaterias.css */
+/* TablaMaterias.css */
+
+.pagination {
+  display: flex;
+  justify-content: center; /* Cambiar de "space-around" a "center" */
+  align-items: center;
+  margin-top: 10px;
+}
+
+.pagination button {
+  background-color: #24d063;
+  color: #0a0909;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px; /* Ajustar este valor según lo que necesites */
+}
+
+
+.pagination button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+h1{
+  text-align: center;
+  color: #24d063;
+  
+}
+.selected-row {
+  background-color: #f0f0f0; /* Cambia esto al color deseado */
+  cursor: pointer;
+}
+
+/* Agrega estilos personalizados para los botones de editar y eliminar */
+.edit-button,
+.delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+

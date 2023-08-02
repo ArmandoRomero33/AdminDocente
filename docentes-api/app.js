@@ -1,3 +1,6 @@
+//Hola Armando I love #
+//Puto el que lo lea
+
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
@@ -11,7 +14,6 @@ const db = mysql.createConnection({
   password: '',
   database: 'docentesdb',
 });
-
 // Conectar a la base de datos
 db.connect((err) => {
   if (err) {
@@ -25,12 +27,25 @@ db.connect((err) => {
 app.use(cors());
 
 // Ruta para obtener los datos de materias desde la base de datos
-app.get('/api/docentes', (req, res) => {
-  const query = 'SELECT * FROM docentes'; // Consulta para obtener todos los datos de la tabla "materias"
+app.get('/api/materias', (req, res) => {
+  const query = 'SELECT * FROM materias'; // Consulta para obtener todos los datos de la tabla "materias"
   db.query(query, (err, result) => {
     if (err) {
       console.error('Error al obtener datos de materias:', err);
       res.status(500).json({ error: 'Error al obtener datos de materias' });
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+// Ruta para obtener los datos de docentes desde la base de datos
+app.get('/api/docentes', (req, res) => {
+  const query = 'SELECT * FROM docentes'; // Consulta para obtener todos los datos de la tabla "docentes"
+  db.query(query, (err, result) => {
+    if (err) {
+      console.error('Error al obtener datos de docentes:', err);
+      res.status(500).json({ error: 'Error al obtener datos de docentes' });
     } else {
       res.json(result);
     }
