@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './TablaMaterias.css'; // Importa el archivo CSS
+import './TablaMaterias.css';
+import { FaTrash } from 'react-icons/fa';
 
 const TablaDocentes = () => {
   const [showMaterias, setShowMaterias] = useState(true);
@@ -65,24 +66,35 @@ const TablaDocentes = () => {
   const handleToggleTable = () => {
     setShowMaterias((prevState) => !prevState);
   };
+
+  // Función para eliminar una fila por su ID
   const handleDeleteRow = async (id) => {
     try {
-      // Realiza una solicitud HTTP DELETE al backend para eliminar la fila con el ID proporcionado
+      // Realizar la solicitud de eliminación al backend
       await axios.delete(`http://localhost:4000/api/docentes/${id}`);
-      // Actualiza los datos en el frontend eliminando la fila correspondiente
+      // Actualizar los datos de docentes para reflejar la eliminación
       setDatosDocentes((prevData) => prevData.filter((docente) => docente.id !== id));
     } catch (error) {
       console.error('Error al eliminar el docente:', error);
     }
   };
-
+  const handleDeleteMateria = async (id) => {
+    try {
+      // Realizar la solicitud de eliminación al backend
+      await axios.delete(`http://localhost:4000/api/materias/${id}`);
+      // Actualizar los datos de materias para reflejar la eliminación
+      setDatosMaterias((prevData) => prevData.filter((materia) => materia.id !== id));
+    } catch (error) {
+      console.error('Error al eliminar la materia:', error);
+    }
+  };
   return (
     <div>
       <div className="button-container">
         <div className="toggle-table">
           <div className="botondm">
             <button onClick={handleToggleTable}>
-              {showMaterias ? "Mostrar Docentes" : "Mostrar Materias"}
+              {showMaterias ? "Mostrar Materias" : "Mostrar Docentes"}
             </button>
           </div>
         </div>
@@ -127,6 +139,12 @@ const TablaDocentes = () => {
                   <td>{item.HoraFrenteGrupo}</td>
                   <td>{item.Asesorias}</td>
                   <td>{item.Nivel}</td>
+                  <button
+                      className="delete-button"
+                      onClick={() => handleDeleteMateria(item.id)}
+                    >
+                      <FaTrash />
+                    </button>
                 </>
               ) : (
                 <>
@@ -138,6 +156,15 @@ const TablaDocentes = () => {
                   <td>{item.telefono}</td>
                   {!showMaterias && <td>{item.correo_electronico}</td>}
                   {!showMaterias && <td>{item.descripcion}</td>}
+                  <td>
+                    {/* Botón para eliminar */}
+                    <button
+                      className="delete-button"
+                      onClick={() => handleDeleteRow(item.id)}
+                    >
+                      <FaTrash />
+                    </button>
+                  </td>
                 </>
               )}
             </tr>

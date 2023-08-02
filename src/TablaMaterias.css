@@ -196,11 +196,5 @@ h1{
   cursor: pointer;
 }
 
-/* Agrega estilos personalizados para los botones de editar y eliminar */
-.edit-button,
-.delete-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
+
 
