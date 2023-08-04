@@ -67,6 +67,7 @@ const TablaDocentes = () => {
     setShowMaterias((prevState) => !prevState);
   };
 
+ 
   
   return (
     <div>
