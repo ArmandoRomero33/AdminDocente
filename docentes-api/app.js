@@ -1,3 +1,6 @@
+//Hola Armando I love #
+//Puto el que lo lea
+
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
@@ -11,7 +14,6 @@ const db = mysql.createConnection({
   password: '',
   database: 'docentesdb',
 });
-
 // Conectar a la base de datos
 db.connect((err) => {
   if (err) {
@@ -46,34 +48,6 @@ app.get('/api/docentes', (req, res) => {
       res.status(500).json({ error: 'Error al obtener datos de docentes' });
     } else {
       res.json(result);
-    }
-  });
-});
-
-// Ruta para eliminar un docente por su ID
-app.delete('/api/docentes/:id', (req, res) => {
-  const { id } = req.params;
-  const query = 'DELETE FROM docentes WHERE id = ?';
-  db.query(query, [id], (err, result) => {
-    if (err) {
-      console.error('Error al eliminar el docente:', err);
-      res.status(500).json({ error: 'Error al eliminar el docente' });
-    } else {
-      res.json({ message: 'Docente eliminado exitosamente' });
-    }
-  });
-});
-
-// Ruta para eliminar una materia por su ID
-app.delete('/api/materias/:id', (req, res) => {
-  const { id } = req.params;
-  const query = 'DELETE FROM materias WHERE id = ?';
-  db.query(query, [id], (err, result) => {
-    if (err) {
-      console.error('Error al eliminar la materia:', err);
-      res.status(500).json({ error: 'Error al eliminar la materia' });
-    } else {
-      res.json({ message: 'Materia eliminada exitosamente' });
     }
   });
 });
